@@ -6,8 +6,8 @@ import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 
-	"github.com/kkonat/Udemy.hotel/pkg/config"
-	"github.com/kkonat/Udemy.hotel/pkg/handlers"
+	"github.com/kkonat/hotel-webapp/pkg/config"
+	"github.com/kkonat/hotel-webapp/pkg/handlers"
 )
 
 func routes(app *config.AppConfig) http.Handler {

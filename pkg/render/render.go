@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"text/template"
 
-	"github.com/kkonat/Udemy.hotel/pkg/config"
-	"github.com/kkonat/Udemy.hotel/pkg/models"
+	"github.com/kkonat/hotel-webapp/pkg/config"
+	"github.com/kkonat/hotel-webapp/pkg/models"
 )
 
 var functions = template.FuncMap{}

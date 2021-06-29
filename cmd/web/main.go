@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/alexedwards/scs/v2"
-	"github.com/kkonat/Udemy.hotel/pkg/config"
-	"github.com/kkonat/Udemy.hotel/pkg/handlers"
-	"github.com/kkonat/Udemy.hotel/pkg/render"
+	"github.com/kkonat/hotel-webapp/pkg/config"
+	"github.com/kkonat/hotel-webapp/pkg/handlers"
+	"github.com/kkonat/hotel-webapp/pkg/render"
 )
 
 const hostName = "localhost:8080"

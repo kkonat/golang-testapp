@@ -1,4 +1,4 @@
-module github.com/kkonat/Udemy.hotel
+module github.com/kkonat/hotel-webapp
 
 go 1.16
 

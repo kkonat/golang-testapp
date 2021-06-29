@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/kkonat/Udemy.hotel/pkg/config"
-	"github.com/kkonat/Udemy.hotel/pkg/models"
-	"github.com/kkonat/Udemy.hotel/pkg/render"
+	"github.com/kkonat/hotel-webapp/pkg/config"
+	"github.com/kkonat/hotel-webapp/pkg/models"
+	"github.com/kkonat/hotel-webapp/pkg/render"
 )
 
 // repo the repository used by the handlers
