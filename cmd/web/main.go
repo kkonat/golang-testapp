@@ -12,14 +12,14 @@ import (
 	"github.com/kkonat/hotel-webapp/pkg/render"
 )
 
-const hostName = "localhost:8080"
+const portNumber = "localhost:8080"
 
 var app config.AppConfig
 var session *scs.SessionManager
 
 func main() {
 
-	app.InProduction = false
+	app.InProduction = true
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
@@ -29,12 +29,12 @@ func main() {
 
 	app.Session = session
 
-	tc, err := render.CreateTemplateCache()
-	if err != nil {
-		log.Fatal("cannot create template cache")
-	}
+	// tc, err := render.CreateTemplateCache()
+	// if err != nil {
+	// 	log.Fatal("cannot create template cache")
+	// }
 
-	app.TemplateCache = tc
+	// app.TemplateCache = tc
 	app.UseCache = false
 
 	repo := handlers.NewRepo(&app)
@@ -42,17 +42,13 @@ func main() {
 
 	render.NewTemplates(&app)
 
-	//http.HandleFunc("/", handlers.Repo.Home)
-	//http.HandleFunc("/about", handlers.Repo.About)
-
-	fmt.Println("Listening in port", hostName)
-	//http.ListenAndServe(":8080", nil)
+	fmt.Println("Listening in port", portNumber)
 
 	srv := &http.Server{
-		Addr:    hostName,
+		Addr:    portNumber,
 		Handler: routes(&app),
 	}
-	err = srv.ListenAndServe()
+	err := srv.ListenAndServe()
 	log.Fatal(err)
 
 }

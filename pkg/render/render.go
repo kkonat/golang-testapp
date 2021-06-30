@@ -2,7 +2,6 @@ package render
 
 import (
 	"bytes"
-	"fmt"
 	"log"
 	"net/http"
 	"path/filepath"
@@ -18,7 +17,6 @@ var app *config.AppConfig
 
 func NewTemplates(a *config.AppConfig) {
 	app = a
-
 }
 
 func AddDefaultData(td *models.TemplateData) *models.TemplateData {
@@ -33,6 +31,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 		templCache = app.TemplateCache
 	} else {
 		templCache, _ = CreateTemplateCache() // re-read each time casuse .tmpl files could be changed externally
+		app.TemplateCache = templCache
+		app.UseCache = true
 	}
 
 	t, ok := templCache[tmpl] // get cached data from the map
@@ -47,7 +47,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 
 	_, err := buf.WriteTo(w)
 	if err != nil {
-		fmt.Println("Error writing template to browser", err)
+		log.Fatal("Error writing template to browser", err)
 	}
 }
 
@@ -66,7 +66,7 @@ func CreateTemplateCache() (map[string]*template.Template, error) {
 		name := filepath.Base(page)
 		//create template basing on each page
 		nTempl, err := template.New(name).Funcs(functions).ParseFiles(page)
-		fmt.Println("Page is currently", page)
+		log.Println("Building Template Cache", page)
 		if err != nil {
 			return myCache, err
 		}

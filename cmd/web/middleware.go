@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/justinas/nosurf"
@@ -25,7 +24,7 @@ func NoSurf(next http.Handler) http.Handler {
 		SameSite: http.SameSiteLaxMode,
 	}
 	csrfHandler.SetBaseCookie(cookie)
-	fmt.Println(cookie)
+
 	return csrfHandler
 }
 
