@@ -1,4 +1,4 @@
-# Golang Hotel webapp
+# Golang tesp webapp
 
 Repository of a sample golang web application
 
